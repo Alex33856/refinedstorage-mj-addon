@@ -1,0 +1,11 @@
+[
+  {
+    "modid": "rsmjaddon",
+    "name": "Refined Storage MJ Addon",
+    "description": "Adds MJ Support to RS Readers & Writers",
+    "version": "1.0.0",
+    "mcversion": "1.12.2",
+    "authorList": ["alex"],
+    "dependencies": ["buildcraftapi", "refinedstorage"]
+  }
+]

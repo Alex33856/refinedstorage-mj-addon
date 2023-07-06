@@ -1,0 +1,60 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url = 'https://maven.minecraftforge.net/' }
+    }
+
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
+    }
+}
+        
+apply plugin: 'net.minecraftforge.gradle'
+// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+
+version = '1.0'
+group = 'me.alex.rsmjaddon'
+archivesBaseName = 'rsmjaddon'
+sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+
+minecraft {
+    mappings channel: 'snapshot', version: '20171003-1.12'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            property 'forge.logging.console.level', 'debug'
+        }
+
+        server {
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+
+            property 'forge.logging.console.level', 'debug'
+        }
+    }
+}
+
+repositories {
+    maven { url='https://www.mod-buildcraft.com/maven' }
+
+    flatDir {
+        dirs 'lib'
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860'
+    compileOnly "com.mod-buildcraft:buildcraft-api:7.99.24.8"
+    compileOnly "refinedstorage:refinedstorage:1.6.16"
+
+    // Development Environment
+    runtime "com.mod-buildcraft:buildcraft-all:7.99.24.8"
+    runtime "refinedstorage:refinedstorage:1.6.16"
+}
+
+jar {
+    manifest {
+    }
+}
